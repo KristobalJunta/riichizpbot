@@ -2,7 +2,7 @@ riichizpbot
 
 # Бот для клуба риичи "Ламповый север"
 
-[@riichizpbot](t.me/riichizpbot)
+[@riichizpbot](https://t.me/riichizpbot)
 
 Этот бот пока что мало что умеет и был написан for fun.
 Умеет он, собсвтенно, показывать статистику, взятую с сайта клуба.
