@@ -3,16 +3,21 @@
 from bs4 import BeautifulSoup
 from config import config
 import telebot
-import subprocess
+import requests
 
 
 def parse_data():
     parse_url = 'http://stat.candyrate.com.ua/'
-    subprocess.call('http --check-status --ignore-stdin --timeout=2.5 -p b get {} > resp.txt'.format(parse_url),
-                    shell=True)
-    resp = open('resp.txt')
+    user_agent = {'User-agent': 'Mozilla/5.0'}
+    stats = requests.get(parse_url, headers=user_agent).content.decode('utf-8')
+    print(stats)
 
-    soup = BeautifulSoup(resp.read(), 'html.parser')
+    if stats:
+        cache = open('cache.txt', 'w')
+        cache.write(stats)
+        cache.close()
+
+    soup = BeautifulSoup(stats, 'html.parser')
 
     table = soup.find_all('table')
     if table:
