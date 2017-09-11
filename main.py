@@ -77,12 +77,11 @@ def handle_help(message):
 @bot.message_handler(commands=['stats'])
 def handle_stats(message):
     bot.send_chat_action(message.chat.id, 'typing')
-    text = message.text.replace('/stats', '').strip()
+    args = message.text.strip().split()
     stats = parse_data()
-    nick = text
-    print(nick)
 
-    if len(nick):
+    if len(args) > 1:
+        nick = args[1]
         row = [x for x in stats if x['name'] == nick]
         response = form_row(row[0]) if row else 'Такого игрока в таблице нет.'
     else:
