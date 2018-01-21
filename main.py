@@ -80,11 +80,17 @@ def handle_stats(message):
     stats = parse_data()
 
     if len(args) > 1:
-        nick = args[1]
-        row = [x for x in stats if x['name'] == nick]
-        response = form_row(row[0]) if row else 'Такого игрока в таблице нет.'
+        nicknames = [n.strip() for n in ''.join(args[1:]).split(',')]
+        rows = [x for x in stats if x['name'] in nicknames]
+        if len(rows) == 0:
+            player = 'Игрока' if len(nicknames) == 1 else 'Игроков'
+            response = '{} {} в таблице нет.'.format(player, args[1:])
+        else:
+            response = ''
+            for row in rows:
+                response += form_row(row)
     else:
-        response = form_table(stats)
+        response = form_table(stats[0:5])
 
     response += '\n[таблица](http://stat.candyrate.com.ua/)'
     bot.send_message(message.chat.id, response, parse_mode='Markdown')
