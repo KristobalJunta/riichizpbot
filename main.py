@@ -80,8 +80,8 @@ def handle_stats(message):
     stats = parse_data()
 
     if len(args) > 1:
-        nicknames = [n.strip() for n in ''.join(args[1:]).split(',')]
-        rows = [x for x in stats if x['name'] in nicknames]
+        nicknames = [n.strip().lower() for n in ''.join(args[1:]).split(',')]
+        rows = [x for x in stats if x['name'].lower() in nicknames]
         if len(rows) == 0:
             player = 'Игрока' if len(nicknames) == 1 else 'Игроков'
             response = '{} {} в таблице нет.'.format(player, args[1:])
