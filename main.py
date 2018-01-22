@@ -68,7 +68,7 @@ def handle_help(message):
     response = ''.join([
         'Это бот, сделанный для клуба "Ламповый Север"\n',
         'Пока что он умеет только показывать стату - используй команды\n',
-        '/stats\n/stats nick'
+        '/stats\n/stats NICK[, SECOND NICK, ...]'
     ])
     bot.send_message(message.chat.id, response)
 
