@@ -11,9 +11,8 @@ def parse_data():
     stats = requests.get(config.get('url'), headers=user_agent).content.decode('utf-8')
 
     if stats:
-        cache = open('cache.txt', 'w')
-        cache.write(stats)
-        cache.close()
+        with open('cache.txt', 'w') as cache:
+            cache.write(stats)
 
     soup = BeautifulSoup(stats, 'html.parser')
 
