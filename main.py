@@ -7,9 +7,8 @@ import requests
 
 
 def parse_data():
-    parse_url = 'http://stat.candyrate.com.ua/'
     user_agent = {'User-agent': 'Mozilla/5.0'}
-    stats = requests.get(parse_url, headers=user_agent).content.decode('utf-8')
+    stats = requests.get(config.get('url'), headers=user_agent).content.decode('utf-8')
 
     if stats:
         cache = open('cache.txt', 'w')
