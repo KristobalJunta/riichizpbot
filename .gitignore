@@ -1,6 +1,12 @@
 __pycache__/
+*.pyc
+
 .idea/
+.vscode/
+
+.venv/
 env/
+
 config.py
 cache.txt
 Pipfile.lock

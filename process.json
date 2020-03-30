@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "riichizpbot",
+      "script": "main.py",
+      "interpreter": ".venv/bin/python"
+    }
+  ]
+}
